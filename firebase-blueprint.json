@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Public profile info for users",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "email": { "type": "string" }
+      },
+      "required": ["displayName", "email"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "Main event details",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "date": { "type": "string" },
+        "totalBudget": { "type": "number" },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["title", "ownerId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/events/{eventId}": {
+      "schema": "Event",
+      "description": "Events data"
+    },
+    "/events/{eventId}/tasks/{taskId}": {
+      "schema": "object",
+      "description": "Event tasks"
+    },
+    "/events/{eventId}/guests/{guestId}": {
+      "schema": "object",
+      "description": "Guest list"
+    }
+  }
+}
